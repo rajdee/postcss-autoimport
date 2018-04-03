@@ -1,0 +1,40 @@
+{
+  "name": "postcss-autoimport",
+  "version": "0.0.1",
+  "description": "PostCSS plugin for automatic import of global dependencies",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "global",
+    "import"
+  ],
+  "author": "Ruslan Abdullaev <skarlatin@mail.ru>",
+  "license": "MIT",
+  "repository": "rajdee/postcss-autoimport",
+  "bugs": {
+    "url": "https://github.com/rajdee/postcss-autoimport/issues"
+  },
+  "homepage": "https://github.com/rajdee/postcss-autoimport",
+  "dependencies": {
+    "postcss": "^6.0.16"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "eslint-config-postcss": "^2.0.2",
+    "jest": "^22.4.2",
+    "postcss-import": "^11.1.0"
+  },
+  "scripts": {
+    "test": "jest && eslint *.js"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-postcss/es5",
+    "env": {
+      "jest": true
+    }
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
