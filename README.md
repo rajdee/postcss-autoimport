@@ -33,6 +33,13 @@ Default: `[]`
 
 An array of paths to directories or files which should be imported
 
+#### `root`
+
+Type: `String`
+Default: process.cwd()
+
+Define the root where to resolve path.
+
 
 
 See [PostCSS] docs for examples for your environment.

@@ -1,26 +1,22 @@
 var postcss = require('postcss');
-var fs = require('fs');
 var path = require('path');
+var fg = require('fast-glob');
 
 module.exports = postcss.plugin('postcss-autoimport', function (opts) {
     opts = opts || {};
     opts.paths = opts.paths || [];
+    opts.root = opts.root || process.cwd();
+
+    var files = fg.sync(opts.paths);
+    var importedFiles = files.reverse().map(function (file) {
+        return path.relative(opts.root, file);
+    });
 
     return function (root) {
-        opts.paths.reverse().forEach(function (resourcePath) {
-            var isDirectory = fs.statSync(resourcePath).isDirectory();
-            var files = isDirectory ?
-                fs.readdirSync(resourcePath).reverse() :
-                [resourcePath];
-
-            files.forEach(function (file) {
-                root.prepend({
-                    name: 'import',
-                    params: '"' + path.join(
-                        isDirectory ? resourcePath : '',
-                        file
-                    ) + '"'
-                });
+        importedFiles.forEach(function (file) {
+            root.prepend({
+                name: 'import',
+                params: '"' + file + '"'
             });
         });
     };
