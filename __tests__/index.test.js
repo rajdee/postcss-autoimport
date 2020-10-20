@@ -1,12 +1,13 @@
-var postcss = require('postcss');
-var postcssImport = require('postcss-import');
-var fs = require('fs');
-var path = require('path');
-var rootPath = process.cwd();
+const postcss = require('postcss');
+const postcssImport = require('postcss-import');
 
-var plugin = require('../');
-var css = fs.readFileSync(path.join(rootPath, '__tests__/css/local/input.css'), 'utf8');
-var options = {
+const fs = require('fs');
+const path = require('path');
+const rootPath = process.cwd();
+const plugin = require('../');
+
+const css = fs.readFileSync(path.join(rootPath, '__tests__/css/local/input.css'), 'utf8');
+const options = {
     paths: [
         path.join(rootPath, '__tests__/css/common/_global.css'),
         path.join(rootPath, '__tests__/css/common/global1/**/*.css'),
@@ -21,7 +22,7 @@ function run(output, plugins) {
         })
         .then(result => {
             expect(result.css).toEqual(output);
-            expect(result.warnings().length).toBe(0);
+            expect(result.warnings()).toHaveLength(0);
         });
 }
 

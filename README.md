@@ -9,7 +9,9 @@
 ## Installation
 
 ```console
-$ npm install -D postcss-autoimport
+$ npm install -D postcss postcss-autoimport
+
+$ yarn add -D postcss postcss-autoimport
 ```
 
 ## Usage
